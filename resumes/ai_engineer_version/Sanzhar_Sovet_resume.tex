@@ -1,289 +1,213 @@
 %-------------------------
-% Rezume, a latex resume template for developers
-% Author : Nanu Panchamurthy
+% Resume in Latex
+% Author : Jake Gutierrez
 % Based off of: https://github.com/sb2nov/resume
 % License : MIT
+%------------------------
 
-% Hope this resume template helps you land an awesome job. If you found this helpful, please consider starring the github repo here, .
-%-------------------------
+\documentclass[letterpaper,11pt]{article}
 
-
-
-%------------PACKAGES----------------
-\documentclass[a4paper,11pt]{article}
-
-\usepackage{verbatim} % reimplements the "verbatim" and "verbatim*" environments
-
-\usepackage{titlesec} % provides an interface to sectioning commands i.e. custom elements
-
-\usepackage{color} % provides both foreground and background color management
-
-\usepackage{enumitem} % provides control over enumerate, itemize and description
-
-\usepackage{fancyhdr} % provides extensive facilities for constructing headers, footers and also controlling their use
-
-\usepackage{tabularx} % defines an environment tabularx, extension of "tabular" with an extra designator x, paragraph like column whose width automatically expands to fill the width of the environment
-
-\usepackage{latexsym} % provides mathematical symbols
-
-\usepackage{marvosym} % provides martin vogel's symbol font which contains various symbols
-
-\usepackage[empty]{fullpage} % sets margins to one inch and removes headers, footers etc..
-
-\usepackage[hidelinks]{hyperref} % removes color and shadow of hyperlinks
-
-\usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
-
-\usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
-%-----------------------------------------
-
-\input glyphtounicode % converts glyph names to unicode
-\pdfgentounicode=1 % ensures pdfs generated are ats readable
-
-%----------FONT OPTIONS-------------------
-\usepackage[default]{sourcesanspro} % uses the font source sans pro
-\urlstyle{same} % changes url font from default urlfont to font being used by the document
-%-----------------------------------------
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc} % T1 needed for guillemets («»)
+\input{glyphtounicode}
 
 
-%----------MARGIN OPTIONS-----------------
-\pagestyle{fancy} % set page style to one configured by fancyhdr
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
-\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
-
-\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
-
-% origin of the document is one inch from the top and from and the left
-% oddsidemargin and evensidemargin both refer to the left margin
-% right margin is indirectly set using oddsidemargin
+% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\topmargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
-\addtolength{\textwidth}{1.0in} % sets width of text area in the page to one inch
-\addtolength{\textheight}{1.0in} % sets height of text area in the page to one inch
+\urlstyle{same}
 
-\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
-\raggedright{} % makes all pages the width of current page, no extra horizontal space added
-%------------------------------------------
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
 
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-%--------SECTIONING COMMANDS---------
-% \titleformat{<command>}
-%   [<shape>]{<format>}{<label>}{<sep>}
-%     {<before-code>}[<after-code>]
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
 
-% command is the sectioning command to be redefined
-% shape is the style of the font; scshape stands for small caps style
-% format is the format to be applied to whole title- label and text; absent here
-% label defines the label
-% sep is the horizontal separation between label and title body
-% before-code is the code to be executed before
-% after-code is the code to be executed after
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
 
-\titleformat{\section}
-  {\scshape\large}{}
-    {0em}{\color{blue}}[\color{black}\titlerule\vspace{0pt}]
-%-------------------------------------
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
-%--------REDEFINITIONS----------------
-% redefines the style of the bullet point
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-% redefines the underline depth to 2pt
-\renewcommand{\ULdepth}{2pt}
-%-------------------------------------
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-
-%--------CUSTOM COMMANDS--------------
-%\vspace{} defines a vertical space of given size, modifying this in custom commands can help stretch or shrink resume to remove or add content
-
-% resumeItem renders a bullet point
-\newcommand{\resumeItem}[1]{
-  \item\small{#1}
-}
-
-% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
-\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}}
-
-% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
-\newcommand{\resumeSectionType}[3]{
-  \item\begin{tabular*}{0.96\textwidth}[t]{
-    p{0.20\linewidth}p{0.02\linewidth}p{0.78\linewidth}
-  }
-    \textbf{#1} & #2 & #3
-  \end{tabular*}\vspace{-2pt}
-}
-
-% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
-\newcommand{\resumeTrioHeading}[3]{
-  \item\small{
-    \begin{tabular*}{0.96\textwidth}[t]{
-      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
-    }
-      \textbf{#1} & \textit{#2} & #3
-    \end{tabular*}
-  }
-}
-
-
-% resumeQuadHeading renders four elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with four elements
-\newcommand{\resumeQuadHeading}[4]{
-  \item
-  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & #2 \\
-    \textit{\small#3} & \textit{\small #4} \\
-  \end{tabular*}
-}
-
-% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
-\newcommand{\resumeQuadHeadingChild}[2]{
-  \item
-  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{\small#1} & {\small#2} \\
-  \end{tabular*}
-}
-
-% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
-\newcommand{\resumeHeadingListStart}{
-  \begin{itemize}[leftmargin=0.15in, label={}]
-}
-\newcommand{\resumeHeadingListEnd}{\end{itemize}}
 %-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%__________________RESUME____________________
-% You can rearrange sections in any order you may prefer
 \begin{document}
 
-%-----------CONTACT DETAILS------------------
-% Make sure all the details are correct, you can add more links in the first row of second column if needed
-
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\Huge Sanzhar Sovet \vspace{2pt}} & % row = 1, col = 1
-  Location: Kazakhstan, Astana \\ % row = 1, col = 2
-  \href{https://sovetskiysn.github.io/MyDigitalNook/}{\uline{MyDigitalNook}} $|$ % row = 2, col = 1
-  \href{https://www.linkedin.com/in/sanzhar-sovet-a04620236/}{\uline{LinkedIn}} $|$ % row = 2, col = 1
-  \href{https://github.com/sovetskiysn}{\uline{GitHub}}  & % row = 2, col = 1
-  
-  Email: \href{mailto:sansan503451@gmail.com}{\uline{sansan503451@gmail.com}} $|$ % row = 2, col = 2
-  Phone: +7 705 129 40 08 \\ % row = 2, col = 2
-\end{tabular*}
-%--------------------------------------------
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Sanzhar Sovet} \\ \vspace{1pt}
+    \small Astana, Kazakhstan $|$ +7 705 129 40 08 $|$
+    \href{mailto:sansan503451@gmail.com}{\underline{sansan503451@gmail.com}} $|$
+    \href{https://sovetskiysn.github.io/MyDigitalNook/}{\underline{Website}} $|$
+    \href{https://www.linkedin.com/in/sanzhar-sovet-a04620236/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/sovetskiysn}{\underline{GitHub}}
+\end{center}
 
 
-%-----------SUMMARY--------------------------
-
-\section{Summary}
-\small{
-    AI/ML Engineer with B.Sc. and M.Sc. degrees in Data Science, combining 2+ years of healthcare data analytics and 1+ year of ML engineering experience in both academic and industry environments. Experience covers applied ML research, ML/LLM model training and fine-tuning, MLOps infrastructure for production AI services, and AI agent development for business needs. Interested in roles at the intersection of healthcare, applied research, and production ML engineering.
-}
-
-\section{Experience}
-\resumeHeadingListStart{}
-
-  \resumeQuadHeading{AI/ML engineer | LLMops}{}
-  {Atlanti AI (founded by an ex-Meta and ex-Amazon tech lead)}{Oct 2025 -- Present}
-    \resumeItemListStart{}
-      \resumeItem{Maintained \textbf{MLOps infrastructure} across multiple GPU servers, covering deployment and monitoring of \textbf{ASR, LLM, and TTS models} (FastAPI, LiteLLM, Docker Swarm, Traefik, and Grafana, Prometheus)}
-      \resumeItem{Optimized \textbf{runtime inference} for \textbf{latency-throughput trade-offs} (vLLM, faster-whisper, Orpheus TTS, and Locust)}
-      \resumeItem{Fine-tuned \textbf{LLMs for Kazakh language} using LoRA/QLoRA methods (Unsloth)}
-      \resumeItem{Build AI agents for business process automation, with evaluation, tracing, and monitoring (LangChain/LangGraph and Langfuse)}
-    \resumeItemListEnd{}
-
-  \resumeQuadHeading{Junior Researcher}{}
-  {AI Research Center at Astana IT University}{Mar 2025 -- Present}
-    \resumeItemListStart{}
-      \resumeItem{Developed \textbf{ML models} for EEG-based attention monitoring as part of \href{https://test.neuropro.kz/}{\uline{NeuroPro.kz}}}
-      \resumeItem{Authored publications on EEG-based cognitive states and ML methods in \textbf{Q1/Q2 international journals}}
-      \resumeItem{Collaborated on \textbf{patent-pending} AI developments , working with neuroscientists}
-    \resumeItemListEnd{}
-    
-  \resumeQuadHeading{Healthcare Data Analyst}{}
-  {National Research Center for Healthcare Development}{Mar 2024 -- Aug 2025}
-    \resumeItemListStart{}
-      \resumeItem{Managed and maintained national healthcare databases on \textbf{MS SQL Server}}
-      \resumeItem{Developed \textbf{Power BI dashboards}
-      (\href{https://app.powerbi.com/view?r=eyJrIjoiMTkyZGRhZTItMTg4NC00NzMzLThhY2ItNzIxMTFmYjEwNWQ0IiwidCI6IjE1OGYxNWYzLTgzZTAtNDkwNi04MjRjLTY5YmRjNTBkOWQ2MSIsImMiOjl9}{\uline{view report}}) used by \textbf{Ministers / Vice-Ministers of Healthcare} of Kazakhstan}
-      \resumeItem{Increased department efficiency by developing \textbf{web scraping} and \textbf{Excel automation program} 
-      (\href{https://github.com/sovetskiysn/Excel-automaton}{\uline{view project}}), which saved \textbf{2-3 workdays per month} for each of 8 employees}
-    \resumeItemListEnd{}
-
-  \resumeQuadHeading{Healthcare Data Analyst}{}
-  {Ryte.ai}{Aug 2023  -- Mar 2024}
-    \resumeItemListStart{}
-      \resumeItem{Designed database schemas and integrated external healthcare sources for two healthcare projects to ensure ML-ready datasets with pipelines documented in \textbf{Azure}}
-      \resumeItem{Prepared \textbf{well-structured datasets} in collaboration with Data Engineers, AI specialists, Data Curation, and QA teams}
-      \resumeItem{Analyzed large-scale healthcare datasets in \textbf{Databricks} (Python, SQL, PySpark), delivering accurate statistics and reports that enabled data-driven decision-making across teams and management.}
-      \resumeItem{Contributed to business process mapping (BPMN), customer journey analysis (CJM), and user story definition to align solutions with business needs.}
-    \resumeItemListEnd{}
-
-
-
-
-\resumeHeadingListEnd{}
-%---------------------------------------------
-
-
-%-----------EDUCATION-------------------------
-% Mention your CGPA, if its good, in the first row of second column
-
+%-----------EDUCATION-----------
 \section{Education}
-  \resumeHeadingListStart{}
-    \resumeTrioHeading{Bachelor's degree in Big Data Analytics}{Full Grant, GPA - 3.3}{2020 -- 2023}
-    {Astana IT University}{}
-  \resumeHeadingListEnd{}
-
-  \resumeHeadingListStart{}
-    \resumeTrioHeading{Master's degree in Applied Data Analytics}{Full Grant, GPA - 3.6}{2023 -- 2025}
-    {Astana IT University}{}
-  \resumeHeadingListEnd{}
-%---------------------------------------------
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Master's degree in Applied Data Analytics --- Full Grant, GPA 3.6}{2023 -- 2025}
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Bachelor's degree in Big Data Analysis --- Full Grant, GPA 3.3}{2020 -- 2023}
+  \resumeSubHeadingListEnd
 
 
-%-----------PROJECTS--------------------------
-% Use resumeQuadHeading if four elements are feasible (ex: demo video link), else use resumeTrioHeading. Keep the bullet points simple and concise and try to cover wide variety of skills you have used to build these projects
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
 
-\section{Publications}
-  \resumeHeadingListStart
+    \resumeSubheading
+      {AI/ML Engineer $|$ LLMOps}{Oct 2025 -- Present}
+      {Global Optima Technologies (founded by an ex-Meta/Amazon senior ML engineer)}{}
+      \resumeItemListStart
+        \resumeItem{Maintained \textbf{MLOps infrastructure} across multiple GPU servers, covering deployment and monitoring of \textbf{ASR, LLM, and TTS models} (FastAPI, LiteLLM, Docker Swarm, Traefik, and Grafana, Prometheus)}
+        \resumeItem{Optimized \textbf{runtime inference} for \textbf{latency-throughput trade-offs} (vLLM, faster-whisper, Orpheus TTS, and Locust)}
+        \resumeItem{Fine-tuned \textbf{LLMs for Kazakh language} using LoRA/QLoRA methods (Unsloth)}
+        \resumeItem{Built AI agents for business process automation, with evaluation, tracing, and monitoring (LangChain/LangGraph and Langfuse)}
+      \resumeItemListEnd
 
-      \resumeTrioHeading{Evolutionary Reinforcement Learning}{NumPy, Pandas, Matplotlib, PyTorch, PyGame}{\href{https://github.com/sovetskiysn/Digital-aquarium}{\uline{GitHub link}}}
-      \resumeItemListStart{}
-        \resumeItem{Publication and winning of \textbf{III place} (\href{https://raw.githubusercontent.com/sovetskiysn/Digital-aquarium/refs/heads/main/images/certificate.jpg}{\uline{view certificate}})} at \textbf{conference «2025 IEEE AITU: Digital Generation»}
-        \resumeItem{Built a simulation framework for decentralized multi-agent systems, where agents controlled by \textbf{Neural Network} evolved through genetic algorithms to optimize survival in a 2D grid environment}
+    \resumeSubheading
+      {Junior Researcher}{Mar 2025 -- Present}
+      {AI Research Center at Astana IT University}{}
+      \resumeItemListStart
+        \resumeItem{Developed \textbf{ML models} for EEG-based attention monitoring as part of \href{https://test.neuropro.kz/}{\underline{NeuroPro.kz}}}
+        \resumeItem{Authored publications on EEG-based cognitive states and ML methods in \textbf{Q1/Q2 international journals}}
+        \resumeItem{Collaborated on \textbf{patent-pending} AI developments, working with neuroscientists}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
 
 
-        
-      \resumeItemListEnd{}
-  \resumeHeadingListEnd{}
-%--------------------------------------------
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{ITutor} $|$ \emph{vLLM, faster-whisper, Orpheus TTS, Unsloth, Docker Swarm, FastAPI}}{\href{https://itutor.tilqazyna.kz/}{\underline{itutor.tilqazyna.kz}}}
+          \resumeItemListStart
+            \resumeItem{Set up and maintained the \textbf{GPU serving infrastructure} behind the product, covering deployment, routing, and monitoring (Docker Swarm, Traefik, FastAPI, Grafana, Prometheus)}
+            \resumeItem{Optimized \textbf{ASR and TTS inference} for latency and throughput under concurrent load (faster-whisper, Orpheus TTS, Locust)}
+            \resumeItem{Fine-tuned an \textbf{LLM for the Kazakh language} using LoRA/QLoRA (Unsloth)}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Samruk-Energy AI Platform} $|$ \emph{TODO: stack}}{}
+          \resumeItemListStart
+            \resumeItem{Developed a \textbf{multi-agent system} of six specialized agents}
+            \resumeItemListStart
+              \resumeItem{TODO agent 1 --- what it does}
+              \resumeItem{TODO agent 2 --- what it does}
+              \resumeItem{TODO agent 3 --- what it does}
+            \resumeItemListEnd
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Master's Thesis} $|$ \emph{NumPy, Pandas, Matplotlib, PyTorch, PyGame}}{\href{https://github.com/sovetskiysn/Digital-aquarium}{\underline{Source Code}}}
+          \resumeItemListStart
+            \resumeItem{Published and won \textbf{III place} (\href{https://raw.githubusercontent.com/sovetskiysn/Digital-aquarium/refs/heads/main/images/certificate.jpg}{\underline{certificate}}) at \textbf{conference «2025 IEEE AITU: Digital Generation»}}
+            \resumeItem{Built an \textbf{evolutionary reinforcement learning} model for decentralized multi-agent systems, where agents controlled by a \textbf{Neural Network} evolved through \textbf{genetic algorithms} to optimize survival in a 2D grid environment}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
-\section{Technical Skills}
-  \resumeHeadingListStart{}
-    \resumeSectionType{Programming}{:}{Python, SQL, Docker and Docker Swarm, FastAPI, Streamlit}
-    \resumeSectionType{Machine Learning}{:}{NumPy, Pandas, Scikit-learn, PyTorch, TensorFlow, LangChain \newline NLP, Computer Vision}
-    \resumeSectionType{Data Engineering}{:}{ETL, Power BI (Power Query, DAX), advanced Excel, VBA}
-    \resumeSectionType{Tools \& Platforms}{:}{Linux, Azure, AWS, Git, Figma, VS Code}
-    \resumeSectionType{Languages}{:}{English (Upper-Intermediate), Russian (Native)}
-  \resumeHeadingListEnd{}
 
-%----------------OTHERS----------------------
-% You can add your acheivements, accolades, certifications etc. here.
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming}{: Python, SQL, Bash, HTML/CSS/JavaScript} \\
+     \textbf{Machine Learning \& LLM}{: NumPy, Pandas, Scikit-learn, PyTorch, TensorFlow, Hugging Face Transformers, Unsloth} \\
+     \textbf{Agentic AI \& RAG}{: LangGraph, LangChain, Pydantic, MCP, Qdrant, Docling, ASR (faster-whisper), Orpheus TTS} \\
+     \textbf{Infra \& Serving}{: FastAPI, vLLM, LiteLLM, Docker, Docker Swarm, Kubernetes (kubectl), Traefik} \\
+     \textbf{MLOps \& Observability}{: MLflow, W\&B, Prometheus, Grafana, Locust, Langfuse, LangSmith, LLM-as-judge} \\
+     \textbf{Developer Tools}{: Git, CI/CD (GitLab CI), Claude Code, Codex, context engineering, custom skills/rules} \\
+     \textbf{Languages}{: English (B2), Russian (Native)}
+    }}
+ \end{itemize}
 
+
+%-----------CERTIFICATIONS-----------
 % \section{Certifications}
-%   \resumeItemListStart{}
-%     \resumeItem{\href{https://stepik.org/cert/1036441}{\uline{Python Generation: A Course for Beginners}}}
-%     \resumeItem{\href{https://stepik.org/cert/1048776}{\uline{Python: Fundamentals and Applications}}}
-%     \resumeItem{\href{https://www.credly.com/badges/49c6ec44-04c0-425a-b327-0caa57dd18c9/print}{\uline{AWS Academy Cloud Foundations}}}
-%     \resumeItem{\href{https://www.credly.com/badges/9564a7b9-06a0-4fd8-8c49-db1909134eca/print}{\uline{AWS Academy Machine Learning Foundations}}}
-%   \resumeItemListEnd{}
-% --------------------------------------------
+%  \resumeItemListStart
+%    \resumeItem{\href{https://stepik.org/cert/1036441}{\underline{Python Generation: A Course for Beginners}}}
+%    \resumeItem{\href{https://stepik.org/cert/1048776}{\underline{Python: Fundamentals and Applications}}}
+%    \resumeItem{\href{https://www.credly.com/badges/49c6ec44-04c0-425a-b327-0caa57dd18c9/print}{\underline{AWS Academy Cloud Foundations}}}
+%    \resumeItem{\href{https://www.credly.com/badges/9564a7b9-06a0-4fd8-8c49-db1909134eca/print}{\underline{AWS Academy Machine Learning Foundations}}}
+%  \resumeItemListEnd
 
+
+%-------------------------------------------
 \end{document}
-
-
-
-
