@@ -19,15 +19,15 @@
   // hiding them here is enough to keep them out of sight; delete .build/ by hand
   // when you actually want them gone.
   "files.exclude": {
-    "resumes/**/.build": true,
-    "resumes/**/*.synctex.gz": true,
-    "resumes/**/*.aux": true,
-    "resumes/**/*.log": true,
-    "resumes/**/*.out": true,
-    "resumes/**/*.fls": true,
-    "resumes/**/*.fdb_latexmk": true,
-    "resumes/**/*.bbl": true,
-    "resumes/**/*.blg": true,
-    "resumes/**/*.toc": true
+    "**/.build": true,
+    "**/*.synctex.gz": true,
+    "**/*.aux": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.fls": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.toc": true
   }
 }

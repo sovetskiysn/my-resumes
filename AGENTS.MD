@@ -14,6 +14,7 @@
 - [Окружение сборки: LaTeX Workshop + Docker](#окружение-сборки-latex-workshop--docker)
 - [Генерация PDF](#генерация-pdf)
 - [Версии резюме под разные use case](#версии-резюме-под-разные-use-case)
+- [Шаблоны](#шаблоны)
 - [Сертификаты](#сертификаты)
 - [Настройки VS Code](#настройки-vs-code)
 - [Соглашения](#соглашения)
@@ -35,8 +36,12 @@
 ├── AGENTS.MD                              # этот файл
 ├── .vscode/                               # настройки редактора и рекомендованные расширения
 ├── certificates/                          # PDF/PNG сертификатов (AWS Academy, Coursera, Stepik, THM)
+├── templates/                             # чистые шаблоны резюме «как у автора»
+│   ├── README.md                          # что за шаблоны, лицензии, как завести версию
+│   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT)
+│   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — база текущих резюме
 └── resumes/                               # по подпапке на версию резюме
-    ├── full_version/
+    ├── full_old_version/
     │   ├── Sanzhar_Sovet_resume.tex       # исходник
     │   ├── Sanzhar_Sovet_resume.pdf       # собранный PDF
     │   └── .build/                        # артефакты сборки (не коммитим)
@@ -83,7 +88,7 @@
 
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" \
-    -v "$PWD/resumes/full_version":/work -w /work \
+    -v "$PWD/resumes/full_old_version":/work -w /work \
     texlive/texlive:TL2025-historic \
     latexmk -pdf -auxdir=.build -interaction=nonstopmode -synctex=1 \
     Sanzhar_Sovet_resume.tex
@@ -116,7 +121,7 @@
 
 | Папка | Назначение |
 | --- | --- |
-| `resumes/full_version/` | Полная версия: весь опыт, публикации, полный список навыков. База, от которой отпочковываются остальные. |
+| `resumes/full_old_version/` | Старая полная версия: весь опыт, публикации, полный список навыков. Исторический вариант — именно от него отпочковались остальные версии. |
 | `resumes/ai_engineer_version/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. |
 
 Сейчас `ai_engineer_version` — точная копия полной версии; обрезка под AI-инженера
@@ -138,6 +143,24 @@ grep -rn "+7 705" resumes/
 
 Взамен каждая версия режется как угодно свободно, не ломая соседние — ради этого
 схема и выбрана.
+
+## Шаблоны
+
+`templates/` — библиотека исходных шаблонов резюме на LaTeX в том виде, в каком
+их выложили авторы: без моих данных и без правок. Подробности, таблица шаблонов
+и лицензии — в [`templates/README.md`](templates/README.md).
+
+| Папка | Шаблон | Лицензия |
+| --- | --- | --- |
+| `templates/jakes_resume/` | [Jake's Resume](https://github.com/jakegut/resume) | MIT |
+| `templates/nanu_rezume/` | [Rezume](https://github.com/nanupnch/Rezume) | MIT |
+
+Текущие резюме в `resumes/` сделаны на базе **Rezume**.
+
+**Шаблоны не редактируем** — они эталон. Новая версия резюме заводится копией
+шаблона (или ближайшей существующей версии) в `resumes/<версия>/`, и вся правка
+идёт уже там. Благодаря этому `diff` между шаблоном и версией всегда показывает
+ровно мои изменения.
 
 ## Сертификаты
 
