@@ -1,0 +1,14 @@
+# LaTeX build artifacts
+.build/
+*.synctex.gz
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.toc
+
+# OS noise
+.DS_Store
