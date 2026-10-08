@@ -42,6 +42,9 @@
 │   ├── README.md                          # что за шаблоны, лицензии, как завести версию
 │   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT)
 │   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — база текущих резюме
+├── references/                            # чужие материалы-ориентиры, не мои и не шаблоны
+│   ├── real_resumes/                      # реальные резюме других людей как образцы
+│   └── guides/                            # статьи и гайды о том, как писать резюме
 └── resumes/                               # по подпапке на версию резюме
     ├── full_old_version/
     │   ├── Sanzhar_Sovet_resume.tex       # исходник
@@ -54,6 +57,11 @@
 **Имя `.tex` во всех папках одинаковое — `Sanzhar_Sovet_resume.tex`.** Версию
 определяет папка, а не имя файла: так собранный PDF, который уходит рекрутеру,
 всегда называется одинаково и правильно, без `resume_final_v3_ai.pdf`.
+
+В `references/guides/` сохранены пособие в PDF и статьи в Markdown по инженерным,
+AI/ML- и исследовательским резюме. Каталог, порядок чтения и ограничения копий —
+в [`references/guides/README.md`](references/guides/README.md); источники и дата
+сохранения указаны рядом с материалами. Это внешние авторские рекомендации.
 
 ## Окружение сборки: LaTeX Workshop + Docker
 
