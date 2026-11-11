@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "own-kit",
+      "name": "resume-repo",
       "source": {
         "source": "local",
         "path": "./.agents"
@@ -15,6 +15,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "resume-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Paramchoudhary/ResumeSkills.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

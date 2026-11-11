@@ -1,5 +1,8 @@
 # Настройки проекта загружаются Codex после доверия к проекту.
-# MCP-серверы общие с Claude: .agents/.mcp.json через плагин own-kit.
+# MCP-серверы общие с Claude: .agents/.mcp.json через плагин resume-repo.
 
-[plugins."own-kit@resume-agents"]
+[plugins."resume-repo@resume-agents"]
+enabled = true
+
+[plugins."resume-skills@resume-agents"]
 enabled = true

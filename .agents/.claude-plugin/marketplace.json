@@ -6,8 +6,17 @@
   "description": "Project-local agent configuration for the resume repository",
   "plugins": [
     {
-      "name": "own-kit",
-      "source": "./"
+      "name": "resume-repo",
+      "source": "./",
+      "description": "Skills and MCP servers of this resume repository."
+    },
+    {
+      "name": "resume-skills",
+      "source": {
+        "source": "github",
+        "repo": "Paramchoudhary/ResumeSkills"
+      },
+      "description": "Resume, job search and interview skills from Paramchoudhary/ResumeSkills."
     }
   ]
 }

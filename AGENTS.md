@@ -38,7 +38,7 @@
 ```
 .
 ├── AGENTS.md                              # этот файл
-├── .agents/                               # общая настройка агентов: плагин own-kit, скиллы, MCP
+├── .agents/                               # общая настройка агентов: плагин resume-repo, скиллы, MCP
 ├── .claude/settings.json                  # Claude Code: включает плагины из .agents/
 ├── .codex/config.toml                     # Codex: включает плагины из .agents/
 ├── .vscode/                               # настройки редактора и рекомендованные расширения
@@ -140,7 +140,17 @@ AI/ML- и исследовательским резюме. Каталог, по�
 | Папка | Назначение |
 | --- | --- |
 | `resumes/ai_engineer_version_jakes/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. Одна страница. |
-| `resumes/full_version_jakes/` | Полная версия: то же, что AI-версия, плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы, Projects и Skills начинаются со второй (`\newpage`), чтобы секции не рвались между страницами. |
+| `resumes/full_version_jakes/` | Полная версия: то же, что AI-версия, плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы: на первой Summary и весь Experience, Publications, Skills и Education начинаются со второй (`\newpage` перед Publications). |
+
+**Порядок секций в обеих версиях:** Summary (только в полной) → Experience →
+Publications → Skills → Education. Сильнее всего резюме доказывает опыт, поэтому он
+идёт сразу после шапки; публикации — следующее по весу доказательство, выше списка навыков.
+
+**Секции Projects нет.** Рабочие проекты (ITutor для Til-Qazyna, платформа для
+Samruk-Energy) описаны вложенными буллетами внутри своей должности в Experience,
+опубликованные работы — в секции Publications. Projects возвращаем только для
+проектов вне работы: open source, пет-проекты, хакатоны
+([DECISIONS.md](docs/DECISIONS.md#рабочие-проекты--в-experience-без-секции-projects)).
 
 **Как добавлять новую версию:** скопировать папку ближайшей существующей версии,
 переименовать копию под сценарий, оставить имя `.tex` без изменений, затем резать
@@ -232,9 +242,9 @@ Machine Learning Foundations, Coursera, Stepik, TryHackMe) в PDF и PNG. Это
 не находят ([DECISIONS.md](docs/DECISIONS.md#agentsmd-строчными-буквами-и-без-claudemd)).
 
 **Скиллы и MCP.** Общие для Claude Code и Codex и лежат в `.agents/` как наш плагин
-`own-kit` из локального маркетплейса `resume-agents`. `.claude/settings.json` и
-`.codex/config.toml` только включают его; скиллы и MCP-конфигурацию в другие места не
-копируем.
+`resume-repo` из локального маркетплейса `resume-agents`; там же подключён внешний
+`resume-skills` (ниже). `.claude/settings.json` и `.codex/config.toml` только включают
+плагины; скиллы и MCP-конфигурацию в другие места не копируем.
 
 ```text
 .agents/
@@ -250,20 +260,41 @@ Machine Learning Foundations, Coursera, Stepik, TryHackMe) в PDF и PNG. Это
 несуществующую папку: иначе Codex загружает скиллы дважды — из `.agents/skills/` и из
 плагина.
 
-**Первая настройка.** Claude Code при открытии проекта сам предложит установить
-маркетплейс и плагин — согласиться. Для Codex один раз из корня репозитория:
+**Плагин `resume-skills`.** Второй плагин того же маркетплейса —
+[Paramchoudhary/ResumeSkills](https://github.com/Paramchoudhary/ResumeSkills) (MIT):
+22 скилла про ATS, буллеты, разбор вакансии, подгонку резюме, LinkedIn, интервью. В
+репозиторий он не копируется: оба агента тянут его с GitHub в свой кеш
+([DECISIONS.md](docs/DECISIONS.md#resumeskills--плагином-а-не-копией)). Правила этого
+файла и свои скиллы важнее его скиллов:
+
+- письма пишутся по нашему `cover-letter`, а не по `cover-letter-generator`;
+- метрику, которую `resume-quantifier` или `resume-bullet-writer` предлагают
+  «оценить», агент в резюме сам не вписывает — спрашивает у пользователя
+  (см. [Соглашения](#соглашения)).
+
+**Первая настройка.** Один раз на машину, из корня репозитория:
 
 ```bash
+claude plugin marketplace add ./.agents
+claude plugin install resume-repo@resume-agents --scope project
+claude plugin install resume-skills@resume-agents --scope project
 codex plugin marketplace add "$(pwd)"
-codex plugin add own-kit@resume-agents
+codex plugin add resume-repo@resume-agents
+codex plugin add resume-skills@resume-agents
 ```
 
-Не добавляйте маркетплейс через `claude plugin marketplace add`: команда запишет в
-`.claude/settings.json` абсолютный путь вместо `./.agents`.
+Сами по `.claude/settings.json` и `.codex/config.toml` плагины не ставятся: эти файлы
+только включают их. Маркетплейс агенты регистрируют в своих пользовательских
+настройках, а `resume-skills` с GitHub Claude Code по настройкам проекта не скачивает.
+`claude plugin marketplace add` запускайте без `--scope project`: с ним команда
+запишет в `.claude/settings.json` абсолютный путь вместо `./.agents`.
+
+`resume-skills` обновляется так: Claude Code — сам, в фоне (`autoUpdate` в
+`.claude/settings.json`), Codex — повтором `codex plugin add resume-skills@resume-agents`.
 
 **Изменения.** Скилл — правка `.agents/skills/<имя>/SKILL.md`, MCP — правка
 `.agents/.mcp.json`. Claude подхватывает их после перезапуска сессии, Codex — после
-`codex plugin add own-kit@resume-agents`. В `.mcp.json` не используйте `${...}`
+`codex plugin add resume-repo@resume-agents`. В `.mcp.json` не используйте `${...}`
 (Codex не раскрывает переменные) и пишите путь к проекту как `.`.
 
 **Где что хранить.**

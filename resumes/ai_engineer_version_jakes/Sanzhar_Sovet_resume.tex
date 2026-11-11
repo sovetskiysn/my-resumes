@@ -99,8 +99,8 @@
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-% Nested list inside a bullet: no extra vertical gap, en dash instead of the level-3 asterisk
-\newcommand{\resumeSubItemListStart}{\begin{itemize}[label=\textendash, topsep=0pt, partopsep=0pt, before=\vspace{-8pt}]}
+% Nested list inside a bullet: hollow circle sized like the top-level bullet, no extra vertical gap
+\newcommand{\resumeSubItemListStart}{\begin{itemize}[label={$\vcenter{\hbox{\tiny$\circ$}}$}, topsep=0pt, partopsep=0pt]}
 \newcommand{\resumeSubItemListEnd}{\end{itemize}}
 
 %-------------------------------------------
@@ -120,28 +120,28 @@
 \end{center}
 
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Astana IT University}{Astana, Kazakhstan}
-      {Master's degree in Applied Data Analytics --- Full Grant, GPA 3.6}{2023 -- 2025}
-    \resumeSubheading
-      {Astana IT University}{Astana, Kazakhstan}
-      {Bachelor's degree in Big Data Analysis --- Full Grant, GPA 3.3}{2020 -- 2023}
-  \resumeSubHeadingListEnd
-
-
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
 
     \resumeSubheading
       {AI/ML Engineer $|$ MLOps}{Oct 2025 -- Present}
-      {\href{https://gotech.kz/}{\underline{Global Optima Technologies}} / \href{https://atlanti.ai/}{\underline{Atlanti AI}} (founded by an ex-Meta/Amazon senior ML engineer)}{}
+      {Global Optima Technologies / Atlanti AI (founded by an ex-Meta/Amazon senior ML engineer)}{}
       \resumeItemListStart
-        \resumeItem{Deployed and maintained \textbf{multimodal AI models} in production, covering \textbf{API development}, \textbf{inference optimization}, \textbf{load testing}, and \textbf{logging and resource monitoring} (GPU, CPU, RAM)}
-        \resumeItem{Built \textbf{AI agent platforms} end to end, covering system architecture, \textbf{multi-agent orchestration}, \textbf{custom agentic workflows}, LLM deployment, external integrations, and agent evaluation}
+        \resumeItem{Deployed and maintained \textbf{multimodal AI models} in production for \textbf{Til-Qazyna}'s \textbf{Kazakh language learning app} (\href{https://itutor.tilqazyna.kz/}{\underline{view app}}) with \textbf{10,000 users}}
+        \resumeSubItemListStart
+          \resumeItem{Developed \textbf{LLM, ASR, and TTS APIs} and optimized \textbf{model inference}, cutting \textbf{median latency} by \textbf{2x for ASR}, \textbf{3x for LLM}, and \textbf{4x for TTS} with \textbf{100 concurrent users}}
+          \resumeItem{Built a \textbf{multi-node GPU cluster} for model serving with a \textbf{reverse proxy}, \textbf{load balancing}, and \textbf{resource monitoring and alerting}, maintaining \textbf{99\% uptime}}
+          \resumeItem{Fine-tuned an \textbf{LLM for the Kazakh language} using LoRA/QLoRA, improving model quality by \textbf{10\%} on benchmarks}
+        \resumeSubItemListEnd
+        \resumeItem{Built an \textbf{end-to-end self-hosted AI agent platform} with a \textbf{ChatGPT-style interface} over \textbf{Samruk-Energy}'s data lake, automating \textbf{6~unique business processes}}
+        \resumeSubItemListStart
+          \resumeItem{Designed the platform's \textbf{AI layer}, covering the chat UI, identity and access management (IAM), agentic workflows, \textbf{LLM serving}, model registry, document processing, databases, object storage, external integrations, and \textbf{agent evaluation and observability systems}}
+          \resumeItem{Developed and evaluated the agents using \textbf{multi-agent orchestration} and \textbf{custom agentic workflows}:}
+          \resumeItem{\textbf{Generative BI agent} acts as an on-demand \textbf{data analyst} for non-technical users, turning plain-language questions into \textbf{SQL} over the database \textbf{semantic layer}, executing it, and answering with analysis and \textbf{charts} in \textbf{under 3~minutes}}
+          \resumeItem{\textbf{Financial Reporting agent} builds \textbf{complex Excel reports} in \textbf{under 1~minute} using \textbf{custom tools} with user-specified parameters, enabling fast what-if analysis that speeds up forecasting}
+          \resumeItem{\textbf{Tender Compliance agent} parses huge PDF tender documents and cross-checks them against each other using \textbf{27 checks}, then reports discrepancies and violations}
+        \resumeSubItemListEnd
       \resumeItemListEnd
 
     \resumeSubheading
@@ -155,31 +155,16 @@
   \resumeSubHeadingListEnd
 
 
-%-----------PROJECTS-----------
-\section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{ITutor App for Til-Qazyna} $|$ \emph{Docker Swarm, FastAPI, vLLM, Unsloth}}{\href{https://itutor.tilqazyna.kz/}{\underline{ITutor}}}
-          \resumeItemListStart
-            \resumeItem{Configured and deployed \textbf{LLM, ASR, and TTS APIs} on \textbf{3 servers with an A10 GPU each}, and set up \textbf{monitoring and load balancing systems} to serve \textbf{100 users}}
-            \resumeItem{Optimized \textbf{ASR, LLM, and TTS model inference}, cutting \textbf{median latency} by \textbf{2x for ASR}, \textbf{3x for LLM}, and \textbf{4x for TTS} with \textbf{10 concurrent users}}
-            \resumeItem{Fine-tuned an \textbf{LLM for the Kazakh language} using LoRA/QLoRA, improving model quality by \textbf{10\%} on benchmarks}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Datalake AI Platform for Samruk-Energy} $|$ \emph{LangGraph, LangChain, Langfuse, Docling}}{}
-          \resumeItemListStart
-            \resumeItem{Fully \textbf{self-hosted AI platform} with a \textbf{ChatGPT-style interface}, automating \textbf{6 business use cases}}
-            \resumeItem{\textbf{Generative BI}: An agent that \textbf{generates SQL queries} in \textbf{under 1 minute}, enabling non-technical users to quickly access and analyze corporate data through a natural-language chat interface}
-            \resumeItem{\textbf{Financial Reporting}: An agent that \textbf{generates complex Excel} reports from \textbf{corporate databases} in \textbf{under 1 minute} based on user requests, enabling rapid exploration of financial forecasting scenarios}
-            \resumeItem{\textbf{Tender Analysis}: An agent that \textbf{analyzes uploaded tender documents} against \textbf{27 compliance checks} and generates reports highlighting identified discrepancies and violations}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Master's Thesis} $|$ \emph{NumPy, Pandas, Matplotlib, PyTorch, PyGame}}{\href{https://github.com/sovetskiysn/Digital-aquarium}{\underline{GitHub}}}
-          \resumeItemListStart
-            \resumeItem{Published and won \textbf{III place} (\href{https://raw.githubusercontent.com/sovetskiysn/Digital-aquarium/refs/heads/main/images/certificate.jpg}{\underline{certificate}}) at \textbf{conference «2025 IEEE AITU: Digital Generation»}}
-            \resumeItem{Built an \textbf{evolutionary reinforcement learning} model for decentralized multi-agent systems, where agents controlled by a \textbf{Neural Network} evolved through \textbf{genetic algorithms} to optimize survival in a 2D grid environment}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
+%-----------PUBLICATIONS-----------
+\section{Publications}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Master's Thesis} $|$ \emph{2025 IEEE AITU: Digital Generation}}{\href{https://github.com/sovetskiysn/Digital-aquarium}{\underline{GitHub}}}
+        \resumeItemListStart
+          \resumeItem{Published and won \textbf{III place} (\href{https://raw.githubusercontent.com/sovetskiysn/Digital-aquarium/refs/heads/main/images/certificate.jpg}{\underline{certificate}}) at the conference}
+          \resumeItem{Built an \textbf{evolutionary reinforcement learning} model for decentralized multi-agent systems, where agents controlled by a \textbf{Neural Network} evolved through \textbf{genetic algorithms} to optimize survival in a 2D grid environment}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
 
 %-----------PROGRAMMING SKILLS-----------
@@ -195,6 +180,18 @@
      \textbf{Languages}{: English (B2), Russian (Native)}
     }}
  \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Master's degree in Applied Data Analytics --- Full Grant, GPA 3.6}{2023 -- 2025}
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Bachelor's degree in Big Data Analysis --- Full Grant, GPA 3.3}{2020 -- 2023}
+  \resumeSubHeadingListEnd
 
 
 %-----------CERTIFICATIONS-----------
