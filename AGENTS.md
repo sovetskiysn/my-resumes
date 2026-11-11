@@ -48,8 +48,8 @@
 ├── diplomas/                              # PDF дипломов об образовании (бакалавриат, магистратура)
 ├── templates/                             # чистые шаблоны резюме «как у автора»
 │   ├── README.md                          # что за шаблоны, лицензии, как завести версию
-│   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT)
-│   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — база текущих резюме
+│   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT) — база ai_engineer_version, full_version_jakes
+│   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — база full_old_version, full_version_rezume
 ├── references/                            # чужие материалы-ориентиры, не мои и не шаблоны
 │   ├── real_resumes/                      # реальные резюме других людей как образцы
 │   └── guides/                            # статьи и гайды о том, как писать резюме
@@ -58,7 +58,11 @@
     │   ├── Sanzhar_Sovet_resume.tex       # исходник
     │   ├── Sanzhar_Sovet_resume.pdf       # собранный PDF
     │   └── .build/                        # артефакты сборки (не коммитим)
-    └── ai_engineer_version/
+    ├── ai_engineer_version/
+    │   └── Sanzhar_Sovet_resume.tex
+    ├── full_version_jakes/
+    │   └── Sanzhar_Sovet_resume.tex
+    └── full_version_rezume/
         └── Sanzhar_Sovet_resume.tex
 ```
 
@@ -140,10 +144,9 @@ AI/ML- и исследовательским резюме. Каталог, по�
 | Папка | Назначение |
 | --- | --- |
 | `resumes/full_old_version/` | Старая полная версия: весь опыт, публикации, полный список навыков. Исторический вариант — именно от него отпочковались остальные версии. |
-| `resumes/ai_engineer_version/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. |
-
-Сейчас `ai_engineer_version` — точная копия полной версии; обрезка под AI-инженера
-ещё не сделана.
+| `resumes/ai_engineer_version/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. На шаблоне Jake's Resume. |
+| `resumes/full_version_jakes/` | Полная версия на базе `ai_engineer_version`: те же AI/ML-опыт и проекты плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы, шаблон Jake's Resume. |
+| `resumes/full_version_rezume/` | То же содержание и тот же набор секций, что в `full_version_jakes`, но на шаблоне Rezume. Правка текста вносится в обе папки. |
 
 **Как добавлять новую версию:** скопировать папку ближайшей существующей версии,
 переименовать копию под сценарий, оставить имя `.tex` без изменений, затем резать
@@ -185,7 +188,8 @@ grep -rn "+7 705" resumes/
 | `templates/jakes_resume/` | [Jake's Resume](https://github.com/jakegut/resume) | MIT |
 | `templates/nanu_rezume/` | [Rezume](https://github.com/nanupnch/Rezume) | MIT |
 
-Текущие резюме в `resumes/` сделаны на базе **Rezume**.
+`full_old_version` и `full_version_rezume` сделаны на базе **Rezume**, `ai_engineer_version` и
+`full_version_jakes` — на базе **Jake's Resume**.
 
 **Шаблоны не редактируем** — они эталон. Новая версия резюме заводится копией
 шаблона (или ближайшей существующей версии) в `resumes/<версия>/`, и вся правка

@@ -19,7 +19,8 @@
 разметка у них похожая: одностраничное ATS-friendly резюме, секции через
 `\resumeSubheading` / `\resumeItem`, без внешних шрифтов и картинок.
 
-Текущие резюме в `resumes/` собраны на базе **Rezume**.
+`full_old_version` и `full_version_rezume` собраны на базе **Rezume**, `ai_engineer_version` и
+`full_version_jakes` — на базе **Jake's Resume**.
 
 В каждой папке шаблона: сам `.tex` и `LICENSE` автора. Лицензии MIT — использовать
 и менять можно свободно, важно лишь не выкидывать копирайт-заголовок из `.tex`.
