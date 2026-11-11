@@ -1,0 +1,20 @@
+{
+  "name": "resume-agents",
+  "interface": {
+    "displayName": "Resume agent plugins"
+  },
+  "plugins": [
+    {
+      "name": "own-kit",
+      "source": {
+        "source": "local",
+        "path": "./.agents"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

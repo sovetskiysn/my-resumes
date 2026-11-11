@@ -1,0 +1,13 @@
+{
+  "name": "resume-agents",
+  "owner": {
+    "name": "Sanzhar Sovet"
+  },
+  "description": "Project-local agent configuration for the resume repository",
+  "plugins": [
+    {
+      "name": "own-kit",
+      "source": "./"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+%-------------------------
+% Cover letter in LaTeX
+% Matches the resume layout (resumes/*/Sanzhar_Sovet_resume.tex):
+% same page size, margins, header and font, so the pair looks like one set.
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % T1 needed for guillemets («»)
+\input{glyphtounicode}
+
+% Same margins as the resume
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+\begin{document}
+
+%----------HEADING----------
+% Copy this block from the resume version the letter goes with
+\begin{center}
+    \textbf{\Huge \scshape Sanzhar Sovet} \\ \vspace{1pt}
+    \small Astana, Kazakhstan $|$ +7 705 129 40 08 $|$
+    \href{mailto:sansan503451@gmail.com}{\underline{sansan503451@gmail.com}} $|$
+    \href{https://sovetskiysn.github.io/MyDigitalNook/}{\underline{Website}} $|$
+    \href{https://www.linkedin.com/in/sanzhar-sovet-a04620236/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/sovetskiysn}{\underline{GitHub}}
+\end{center}
+
+\vspace{8pt}
+
+%----------LETTER----------
+\today
+
+\textbf{COMPANY} --- ROLE
+
+Dear HIRING-MANAGER-OR-TEAM,
+
+OPENING PARAGRAPH.
+
+EVIDENCE PARAGRAPH.
+
+WHY-THIS-COMPANY PARAGRAPH.
+
+CLOSING PARAGRAPH.
+
+Best regards, \\
+Sanzhar Sovet
+
+\end{document}

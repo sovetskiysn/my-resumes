@@ -1,0 +1,10 @@
+{
+  "name": "own-kit",
+  "version": "1.0.0",
+  "description": "Resume repository MCP servers for Codex; skills are discovered from .agents/skills.",
+  "author": {
+    "name": "Sanzhar Sovet"
+  },
+  "mcpServers": "./.mcp.json",
+  "skills": "./.codex-plugin/no-skills/"
+}

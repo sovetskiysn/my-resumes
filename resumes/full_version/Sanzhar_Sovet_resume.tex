@@ -1,0 +1,242 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc} % T1 needed for guillemets («»)
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+% Nested list inside a bullet: no extra vertical gap, en dash instead of the level-3 asterisk
+\newcommand{\resumeSubItemListStart}{\begin{itemize}[label=\textendash, topsep=0pt, partopsep=0pt, before=\vspace{-8pt}]}
+\newcommand{\resumeSubItemListEnd}{\end{itemize}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Sanzhar Sovet} \\ \vspace{1pt}
+    \small Astana, Kazakhstan $|$ +7 705 129 40 08 $|$
+    \href{mailto:sansan503451@gmail.com}{\underline{sansan503451@gmail.com}} $|$
+    \href{https://sovetskiysn.github.io/MyDigitalNook/}{\underline{Website}} $|$
+    \href{https://www.linkedin.com/in/sanzhar-sovet-a04620236/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/sovetskiysn}{\underline{GitHub}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Summary}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     AI/ML Engineer with B.Sc. and M.Sc. degrees in Data Science, combining \textbf{2 years of healthcare data analytics} with \textbf{ML engineering} in both academic and industry environments. Experience covers applied ML research, LLM fine-tuning, MLOps infrastructure for production AI services, and AI agent development for business needs.
+    }}
+ \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Master's degree in Applied Data Analytics --- Full Grant, GPA 3.6}{2023 -- 2025}
+    \resumeSubheading
+      {Astana IT University}{Astana, Kazakhstan}
+      {Bachelor's degree in Big Data Analysis --- Full Grant, GPA 3.3}{2020 -- 2023}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AI/ML Engineer $|$ MLOps}{Oct 2025 -- Present}
+      {\href{https://gotech.kz/}{\underline{Global Optima Technologies}} / \href{https://atlanti.ai/}{\underline{Atlanti AI}} (founded by an ex-Meta/Amazon senior ML engineer)}{}
+      \resumeItemListStart
+        \resumeItem{Deployed and maintained \textbf{multimodal AI models} in production, covering \textbf{API development}, \textbf{inference optimization}, \textbf{load testing}, and \textbf{logging and resource monitoring} (GPU, CPU, RAM)}
+        \resumeItem{Built \textbf{AI agent platforms} end to end, covering system architecture, \textbf{multi-agent orchestration}, \textbf{custom agentic workflows}, LLM deployment, external integrations, and agent evaluation}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Junior Researcher}{Mar 2025 -- Present}
+      {AI Research Center at Astana IT University}{}
+      \resumeItemListStart
+        \resumeItem{Developed \textbf{ML models} for EEG-based attention monitoring as part of \href{https://test.neuropro.kz/}{\underline{NeuroPro.kz}}}
+        \resumeItem{Authored publications on EEG-based cognitive states and ML methods in \textbf{Q1/Q2 international journals}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Healthcare Data Analyst}{Mar 2024 -- Aug 2025}
+      {National Research Center for Healthcare Development}{}
+      \resumeItemListStart
+        \resumeItem{Managed and maintained national healthcare databases on \textbf{MS SQL Server}}
+        \resumeItem{Developed \textbf{Power BI dashboards} (\href{https://app.powerbi.com/view?r=eyJrIjoiMTkyZGRhZTItMTg4NC00NzMzLThhY2ItNzIxMTFmYjEwNWQ0IiwidCI6IjE1OGYxNWYzLTgzZTAtNDkwNi04MjRjLTY5YmRjNTBkOWQ2MSIsImMiOjl9}{\underline{view report}}) used by \textbf{Ministers / Vice-Ministers of Healthcare} of Kazakhstan}
+        \resumeItem{Increased department efficiency by developing a \textbf{web scraping} and \textbf{Excel automation program} (\href{https://github.com/sovetskiysn/Excel-automaton}{\underline{view project}}), which saved \textbf{2--3 workdays per month} for each of \textbf{8 employees}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Healthcare Data Analyst}{Aug 2023 -- Mar 2024}
+      {Ryte.ai}{}
+      \resumeItemListStart
+        \resumeItem{Designed database schemas and integrated external healthcare sources for two healthcare projects to ensure \textbf{ML-ready datasets}, with pipelines documented in \textbf{Azure}}
+        \resumeItem{Prepared \textbf{well-structured datasets} in collaboration with Data Engineers, AI specialists, Data Curation, and QA teams}
+        \resumeItem{Analyzed large-scale healthcare datasets in \textbf{Databricks} (Python, SQL, PySpark), delivering accurate statistics and reports that enabled data-driven decision-making across teams and management}
+        \resumeItem{Contributed to business process mapping (BPMN), customer journey analysis (CJM), and user story definition to align solutions with business needs}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{ITutor App for Til-Qazyna} $|$ \emph{Docker Swarm, FastAPI, vLLM, Unsloth}}{\href{https://itutor.tilqazyna.kz/}{\underline{ITutor}}}
+          \resumeItemListStart
+            \resumeItem{Configured and deployed \textbf{LLM, ASR, and TTS APIs} on \textbf{3 servers with an A10 GPU each}, and set up \textbf{monitoring and load balancing systems} to serve \textbf{100 users}}
+            \resumeItem{Optimized \textbf{ASR, LLM, and TTS model inference}, cutting \textbf{median latency} by \textbf{2x for ASR}, \textbf{3x for LLM}, and \textbf{4x for TTS} with \textbf{10 concurrent users}}
+            \resumeItem{Fine-tuned an \textbf{LLM for the Kazakh language} using LoRA/QLoRA, improving model quality by \textbf{10\%} on benchmarks}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Datalake AI Platform for Samruk-Energy} $|$ \emph{LangGraph, LangChain, Langfuse, Docling}}{}
+          \resumeItemListStart
+            \resumeItem{Fully \textbf{self-hosted AI platform} with a \textbf{ChatGPT-style interface}, automating \textbf{6 business use cases}, including:}
+            \resumeSubItemListStart
+              \resumeItem{\textbf{Generative BI}: An agent that \textbf{generates SQL queries} in \textbf{under one minute}, enabling non-technical users to quickly access and analyze corporate data through a natural-language chat interface}
+              \resumeItem{\textbf{Financial Reporting}: An agent that \textbf{generates complex Excel} reports from \textbf{corporate databases} in \textbf{under one minute} based on user requests, enabling rapid exploration of financial forecasting scenarios}
+              \resumeItem{\textbf{Tender Analysis}: An agent that analyzes uploaded tender documents against \textbf{27 compliance checks} and generates reports highlighting identified discrepancies and violations}
+            \resumeSubItemListEnd
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Master's Thesis} $|$ \emph{NumPy, Pandas, Matplotlib, PyTorch, PyGame}}{\href{https://github.com/sovetskiysn/Digital-aquarium}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{Published and won \textbf{III place} (\href{https://raw.githubusercontent.com/sovetskiysn/Digital-aquarium/refs/heads/main/images/certificate.jpg}{\underline{certificate}}) at \textbf{conference «2025 IEEE AITU: Digital Generation»}}
+            \resumeItem{Built an \textbf{evolutionary reinforcement learning} model for decentralized multi-agent systems, where agents controlled by a \textbf{Neural Network} evolved through \textbf{genetic algorithms} to optimize survival in a 2D grid environment}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming}{: Python, SQL, Bash, HTML/CSS/JavaScript} \\
+     \textbf{Machine Learning \& LLM}{: NumPy, Pandas, Scikit-learn, PyTorch, TensorFlow, Hugging Face Transformers, Unsloth} \\
+     \textbf{Agentic AI \& RAG}{: LangGraph, LangChain, Pydantic, MCP, OpenAI API, Anthropic API, Qdrant, Docling, ASR (faster-whisper), Orpheus TTS} \\
+     \textbf{Data \& Analytics}{: MS SQL Server, Databricks, PySpark, Power BI (Power Query, DAX), advanced Excel, VBA, Azure} \\
+     \textbf{Infra \& Serving}{: FastAPI, vLLM, LiteLLM, Docker, Docker Swarm, Kubernetes (kubectl), Traefik} \\
+     \textbf{MLOps \& Observability}{: MLflow, W\&B, Prometheus, Grafana, Locust, Langfuse, LangSmith, LLM-as-judge} \\
+     \textbf{Developer Tools}{: Git, CI/CD (GitLab CI), Claude Code, Codex, context engineering, custom skills/rules} \\
+     \textbf{Languages}{: English (B2), Russian (Native)}
+    }}
+ \end{itemize}
+
+
+%-----------CERTIFICATIONS-----------
+% \section{Certifications}
+%  \resumeItemListStart
+%    \resumeItem{\href{https://stepik.org/cert/1036441}{\underline{Python Generation: A Course for Beginners}}}
+%    \resumeItem{\href{https://stepik.org/cert/1048776}{\underline{Python: Fundamentals and Applications}}}
+%    \resumeItem{\href{https://www.credly.com/badges/49c6ec44-04c0-425a-b327-0caa57dd18c9/print}{\underline{AWS Academy Cloud Foundations}}}
+%    \resumeItem{\href{https://www.credly.com/badges/9564a7b9-06a0-4fd8-8c49-db1909134eca/print}{\underline{AWS Academy Machine Learning Foundations}}}
+%  \resumeItemListEnd
+
+
+%-------------------------------------------
+\end{document}
