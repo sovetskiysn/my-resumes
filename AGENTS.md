@@ -48,22 +48,17 @@
 ├── diplomas/                              # PDF дипломов об образовании (бакалавриат, магистратура)
 ├── templates/                             # чистые шаблоны резюме «как у автора»
 │   ├── README.md                          # что за шаблоны, лицензии, как завести версию
-│   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT) — база ai_engineer_version, full_version_jakes
-│   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — база full_old_version, full_version_rezume
+│   ├── jakes_resume/                      # Jake's Resume (Jake Gutierrez, MIT) — база текущих версий
+│   └── nanu_rezume/                       # Rezume (Nanu Panchamurthy, MIT) — сейчас не используется
 ├── references/                            # чужие материалы-ориентиры, не мои и не шаблоны
 │   ├── real_resumes/                      # реальные резюме других людей как образцы
 │   └── guides/                            # статьи и гайды о том, как писать резюме
 └── resumes/                               # по подпапке на версию резюме
-    ├── full_old_version/
+    ├── ai_engineer_version_jakes/
     │   ├── Sanzhar_Sovet_resume.tex       # исходник
     │   ├── Sanzhar_Sovet_resume.pdf       # собранный PDF
     │   └── .build/                        # артефакты сборки (не коммитим)
-    ├── ai_engineer_version/
-    │   └── Sanzhar_Sovet_resume.tex
-    ├── full_version_jakes/
-    │   └── Sanzhar_Sovet_resume.tex
-    └── full_version_rezume/
-        └── Sanzhar_Sovet_resume.tex
+    └── full_version_jakes/
 ```
 
 **Имя `.tex` во всех папках одинаковое — `Sanzhar_Sovet_resume.tex`.** Версию
@@ -110,7 +105,7 @@ AI/ML- и исследовательским резюме. Каталог, по�
 
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" \
-    -v "$PWD/resumes/full_old_version":/work -w /work \
+    -v "$PWD/resumes/full_version_jakes":/work -w /work \
     texlive/texlive:TL2025-historic \
     latexmk -pdf -auxdir=.build -interaction=nonstopmode -synctex=1 \
     Sanzhar_Sovet_resume.tex
@@ -140,13 +135,12 @@ AI/ML- и исследовательским резюме. Каталог, по�
 ## Версии резюме под разные use case
 
 Одна подпапка `resumes/` = одна версия = один самостоятельный LaTeX-проект.
+Суффикс `_jakes` в имени папки обозначает шаблон Jake's Resume.
 
 | Папка | Назначение |
 | --- | --- |
-| `resumes/full_old_version/` | Старая полная версия: весь опыт, публикации, полный список навыков. Исторический вариант — именно от него отпочковались остальные версии. |
-| `resumes/ai_engineer_version/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. На шаблоне Jake's Resume. |
-| `resumes/full_version_jakes/` | Полная версия на базе `ai_engineer_version`: те же AI/ML-опыт и проекты плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы, шаблон Jake's Resume. |
-| `resumes/full_version_rezume/` | То же содержание и тот же набор секций, что в `full_version_jakes`, но на шаблоне Rezume. Правка текста вносится в обе папки. |
+| `resumes/ai_engineer_version_jakes/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. Одна страница. |
+| `resumes/full_version_jakes/` | Полная версия: то же, что AI-версия, плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы, Projects и Skills начинаются со второй (`\newpage`), чтобы секции не рвались между страницами. |
 
 **Как добавлять новую версию:** скопировать папку ближайшей существующей версии,
 переименовать копию под сценарий, оставить имя `.tex` без изменений, затем резать
@@ -188,8 +182,8 @@ grep -rn "+7 705" resumes/
 | `templates/jakes_resume/` | [Jake's Resume](https://github.com/jakegut/resume) | MIT |
 | `templates/nanu_rezume/` | [Rezume](https://github.com/nanupnch/Rezume) | MIT |
 
-`full_old_version` и `full_version_rezume` сделаны на базе **Rezume**, `ai_engineer_version` и
-`full_version_jakes` — на базе **Jake's Resume**.
+Текущие резюме в `resumes/` сделаны на базе **Jake's Resume**; Rezume сейчас не
+используется.
 
 **Шаблоны не редактируем** — они эталон. Новая версия резюме заводится копией
 шаблона (или ближайшей существующей версии) в `resumes/<версия>/`, и вся правка
@@ -303,8 +297,9 @@ codex plugin add own-kit@resume-agents
 - **Артефакты сборки не коммитим**: `.build/`, `.synctex.gz`, `.aux`, `.log`,
   `.out`, `.fls`, `.fdb_latexmk`, `.bbl`, `.blg`, `.toc` — в `.gitignore`.
   Собранные PDF резюме коммитим осознанно (ими делятся), мусор — нет.
-- **Собрать обе версии после правки шаблона**: правка, сделанная в одной папке,
-  может сломать другую — они больше не связаны, и молчаливой проверки не будет.
+- **Собрать все версии после правки вёрстки**: правку преамбулы или макросов
+  вносят в каждую папку отдельно, а версии между собой не связаны — молчаливой
+  проверки, что все собираются, не будет.
 - **Версию образа TeX Live не двигаем** — см. раздел про Docker.
 - **Обвязка живёт в репозитории, а не глобально**: заметки, планы и задачи по
   этому проекту держим здесь, а не в пользовательских настройках агента и не в

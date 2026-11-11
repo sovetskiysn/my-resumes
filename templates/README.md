@@ -19,8 +19,8 @@
 разметка у них похожая: одностраничное ATS-friendly резюме, секции через
 `\resumeSubheading` / `\resumeItem`, без внешних шрифтов и картинок.
 
-`full_old_version` и `full_version_rezume` собраны на базе **Rezume**, `ai_engineer_version` и
-`full_version_jakes` — на базе **Jake's Resume**.
+Текущие резюме в `resumes/` собраны на базе **Jake's Resume**; Rezume сейчас не
+используется.
 
 В каждой папке шаблона: сам `.tex` и `LICENSE` автора. Лицензии MIT — использовать
 и менять можно свободно, важно лишь не выкидывать копирайт-заголовок из `.tex`.
@@ -28,12 +28,12 @@
 ## Как завести новую версию резюме из шаблона
 
 ```bash
-mkdir -p resumes/<новая_версия>
-cp templates/nanu_rezume/rezume.tex resumes/<новая_версия>/Sanzhar_Sovet_resume.tex
+mkdir -p resumes/<новая_версия>_jakes
+cp templates/jakes_resume/resume.tex resumes/<новая_версия>_jakes/Sanzhar_Sovet_resume.tex
 ```
 
 Имя `.tex` во всех версиях одинаковое — `Sanzhar_Sovet_resume.tex`; версию
-определяет папка (см. [AGENTS.MD](../AGENTS.MD)). Дальше — открыть файл в VS Code
+определяет папка, суффикс `_jakes` — шаблон (см. [AGENTS.md](../AGENTS.md)). Дальше — открыть файл в VS Code
 и сохранить: LaTeX Workshop соберёт PDF в Docker.
 
 ## Проверка сборки шаблона
