@@ -28,12 +28,12 @@
 ## Как завести новую версию резюме из шаблона
 
 ```bash
-mkdir -p resumes/<новая_версия>_jakes
-cp templates/jakes_resume/resume.tex resumes/<новая_версия>_jakes/Sanzhar_Sovet_resume.tex
+mkdir -p resumes/<новая_версия>
+cp templates/jakes_resume/resume.tex resumes/<новая_версия>/Sanzhar_Sovet_resume.tex
 ```
 
 Имя `.tex` во всех версиях одинаковое — `Sanzhar_Sovet_resume.tex`; версию
-определяет папка, суффикс `_jakes` — шаблон (см. [AGENTS.md](../AGENTS.md)). Дальше — открыть файл в VS Code
+определяет папка (см. [AGENTS.md](../AGENTS.md)). Дальше — открыть файл в VS Code
 и сохранить: LaTeX Workshop соберёт PDF в Docker.
 
 ## Проверка сборки шаблона

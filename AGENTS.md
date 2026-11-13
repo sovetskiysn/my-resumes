@@ -54,11 +54,11 @@
 │   ├── real_resumes/                      # реальные резюме других людей как образцы
 │   └── guides/                            # статьи и гайды о том, как писать резюме
 └── resumes/                               # по подпапке на версию резюме
-    ├── ai_engineer_version_jakes/
+    ├── ai_engineer_version/
     │   ├── Sanzhar_Sovet_resume.tex       # исходник
     │   ├── Sanzhar_Sovet_resume.pdf       # собранный PDF
     │   └── .build/                        # артефакты сборки (не коммитим)
-    └── full_version_jakes/
+    └── full_version/
 ```
 
 **Имя `.tex` во всех папках одинаковое — `Sanzhar_Sovet_resume.tex`.** Версию
@@ -105,7 +105,7 @@ AI/ML- и исследовательским резюме. Каталог, по�
 
   ```bash
   docker run --rm --user "$(id -u):$(id -g)" \
-    -v "$PWD/resumes/full_version_jakes":/work -w /work \
+    -v "$PWD/resumes/full_version":/work -w /work \
     texlive/texlive:TL2025-historic \
     latexmk -pdf -auxdir=.build -interaction=nonstopmode -synctex=1 \
     Sanzhar_Sovet_resume.tex
@@ -135,12 +135,12 @@ AI/ML- и исследовательским резюме. Каталог, по�
 ## Версии резюме под разные use case
 
 Одна подпапка `resumes/` = одна версия = один самостоятельный LaTeX-проект.
-Суффикс `_jakes` в имени папки обозначает шаблон Jake's Resume.
+Обе версии сделаны на базе шаблона Jake's Resume (см. [Шаблоны](#шаблоны)).
 
 | Папка | Назначение |
 | --- | --- |
-| `resumes/ai_engineer_version_jakes/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. Одна страница. |
-| `resumes/full_version_jakes/` | Полная версия: то же, что AI-версия, плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы: на первой Summary и весь Experience, Publications, Skills и Education начинаются со второй (`\newpage` перед Publications). |
+| `resumes/ai_engineer_version/` | Версия под вакансии AI/ML-инженера: обрезанная и заточенная — лишнее убрано, ML/LLM/MLOps вынесено вперёд. Одна страница. |
+| `resumes/full_version/` | Полная версия: то же, что AI-версия, плюс секция Summary, оба места работы Healthcare Data Analyst и навыки по аналитике данных. Две страницы: на первой Summary и весь Experience, Publications, Skills и Education начинаются со второй (`\newpage` перед Publications). |
 
 **Порядок секций в обеих версиях:** Summary (только в полной) → Experience →
 Publications → Skills → Education. Сильнее всего резюме доказывает опыт, поэтому он

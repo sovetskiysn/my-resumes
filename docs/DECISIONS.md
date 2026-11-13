@@ -86,7 +86,8 @@ Code и Codex ищут файл по точному имени `AGENTS.md`, а �
 описывалось дважды. Теперь проекты — вложенные буллеты под должностью, а
 опубликованная магистерская работа — в секции Publications, куда добавляются
 следующие публикации. Отдельная экспериментальная версия
-`full_version_projects_in_experience_jakes` с этой схемой стала новой `full_version_jakes`.
+`full_version_projects_in_experience_jakes` с этой схемой стала новой `full_version`
+(тогда ещё `full_version_jakes`; суффикс `_jakes` убран позже).
 
 **Цена:** пропали стеки по проектам в заголовках (`Docker Swarm, FastAPI, vLLM…`):
 технологии остались только в Skills. Секция Projects уместна, если появятся
